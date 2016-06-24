@@ -6,14 +6,24 @@ var MongoClient = mongodb.MongoClient;
 
 var url = 'mongodb://localhost:27017/my_database_name';
 
-app.get('/', function(req, res){
+
+///////////// how to reach index page////////////////
+/////////////////////////////////////////////////////
+app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 
+<<<<<<< HEAD
+// CONNECTING VIA SOCKET
+
+=======
 /////////////////////////////////////////////////////
 /// protocol for connecting to chat rooms ///////////
 /////////////////////////////////////////////////////
+>>>>>>> 03ac423054f073bff2c184bfb6804d471eb09602
 io.on('connection', function(socket){
 /// room to connect to
 /// stage or comment channel 
