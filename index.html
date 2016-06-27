@@ -19,12 +19,21 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     	<script>
       		var socket = io();
+
+      	// SERVER RESPONSE LISTENERS
+
+      		//room id
+      		socket.on('room_id', function(id) {
+      			// redirect to app page for new chat room
+      			// reassign socket to room id namespace	
+      		});
+
       		$('#create_room').submit(function() {
       			socket.emit('create_room', $("#room_name").val());
       			$("#room_name").val(''));
       			return false;
-      			// need chat room get from form submit
       		});
+
    		</script>
 
 		

@@ -15,15 +15,15 @@ app.get('/', function(req, res){
 /// protocol for connecting to chat rooms ///////////
 /////////////////////////////////////////////////////
 io.on('connection', function(socket){
-/// room to connect to
-/// stage or comment channel 
-	console.log('bingo');
 
 /////////////////////////////////////////////////////
 	socket.on('create_room', function(name){
-		/// stuff happens here
-		var player = 'player1';
-		socket.emit('connected to ' + name + ' as '+player);
+		// get last room id from DB and increment
+		room_id = 1;
+		var nsp = io.of('/'+room_id);
+		// generate new chat room view
+		socket.emit('room_id', room_id);
+		// add chat room to DB
 	});
 /////////////////////////////////////////////////////
 	socket.on('join_as_debater', function(name){
