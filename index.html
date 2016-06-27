@@ -4,8 +4,9 @@
 	</head>
 	<body>
 		<ul id="chatrooms"></ul>
-		<form action="">
-			<button>Make Room</button>
+		<form action="" id="create_room">
+			<input type"=text" id="room_name">
+			<button>Create Room</button>
 				</form>
 		<form action="">
 			<button>Join as Debater</button>
@@ -15,8 +16,15 @@
 				</form>
 
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     	<script>
       		var socket = io();
+      		$('#create_room').submit(function() {
+      			socket.emit('create_room', $("#room_name").val());
+      			$("#room_name").val(''));
+      			return false;
+      			// need chat room get from form submit
+      		});
    		</script>
 
 		

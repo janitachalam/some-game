@@ -20,19 +20,19 @@ io.on('connection', function(socket){
 	console.log('bingo');
 
 /////////////////////////////////////////////////////
-	socket.on('make room', function(name){
+	socket.on('create_room', function(name){
 		/// stuff happens here
 		var player = 'player1';
 		socket.emit('connected to ' + name + ' as '+player);
 	});
 /////////////////////////////////////////////////////
-	socket.on('join as debater', function(name){
+	socket.on('join_as_debater', function(name){
 		/// stuff stuff
 		var player = 'player2';
 		socket.emit('connected to '+ name + ' as '+player);
 	});
 /////////////////////////////////////////////////////
-	socket.on('join as comentator', function(name){
+	socket.on('join_as_commentator', function(name){
 		/// stuff stuff
 		socket.emit('connected to '+ name + ' as commentator');
 	});
@@ -57,7 +57,7 @@ MongoClient.connect(url, function (err, db) {
     //HURRAY!! We are connected. :)
     console.log('Connection established to', url);
 
-    // do some work here with the database.
+    var chat_rooms = db.collection('chat_rooms');
 
     //Close connection
     db.close();
