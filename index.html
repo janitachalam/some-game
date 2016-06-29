@@ -29,7 +29,10 @@
       		});
 
       		$('#create_room').submit(function() {
-               $.get("/chat");
+               // get chat room view
+               $.get("/chat", function(data, status) {
+                  document.write(data);
+               }); 
       			socket.emit('create_room');
       			return false;
       		});

@@ -10,8 +10,8 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/1', function(req, res) {
-	res.sendFile(__dirname + '/test.html');
+app.get('/chat', function(req, res) {
+	res.sendFile(__dirname + '/chat.html');
 });
 
 /////////////////////////////////////////////////////
