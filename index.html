@@ -5,7 +5,6 @@
 	<body>
 		<ul id="chatrooms"></ul>
 		<form action="" id="create_room">
-			<input type"=text" id="room_name">
 			<button>Create Room</button>
 				</form>
 		<form action="">
@@ -25,16 +24,15 @@
       		//room id
       		socket.on('room_id', function(id) {
       			// redirect to app page for new chat room
+      		
       			// reassign socket to room id namespace	
       		});
 
       		$('#create_room').submit(function() {
-      			socket.emit('create_room', $("#room_name").val());
-      			$("#room_name").val(''));
+               $.get("/chat");
+      			socket.emit('create_room');
       			return false;
       		});
 
-   		</script>
-
-		
+   		</script>		
 	</body>

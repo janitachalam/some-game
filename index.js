@@ -10,17 +10,22 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/1', function(req, res) {
+	res.sendFile(__dirname + '/test.html');
+});
 
 /////////////////////////////////////////////////////
 /// protocol for connecting to chat rooms ///////////
 /////////////////////////////////////////////////////
-io.on('connection', function(socket){
-
+io.on('connect', function(socket){
+	console.log('received connection');
 /////////////////////////////////////////////////////
 	socket.on('create_room', function(name){
 		// get last room id from DB and increment
+		console.log('received room connection');
 		room_id = 1;
 		var nsp = io.of('/'+room_id);
+
 		// generate new chat room view
 		socket.emit('room_id', room_id);
 		// add chat room to DB
@@ -50,16 +55,16 @@ http.listen(3000,function(){
 // DB OPERATIONS
 
 // Use connect method to connect to the Server
-MongoClient.connect(url, function (err, db) {
-  if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
-    //HURRAY!! We are connected. :)
-    console.log('Connection established to', url);
+// MongoClient.connect(url, function (err, db) {
+//   if (err) {
+//     console.log('Unable to connect to the mongoDB server. Error:', err);
+//   } else {
+//     //HURRAY!! We are connected. :)
+//     console.log('Connection established to', url);
 
-    var chat_rooms = db.collection('chat_rooms');
+//     var chat_rooms = db.collection('chat_rooms');
 
-    //Close connection
-    db.close();
-  }
-});
+//     //Close connection
+//     db.close();
+//   }
+// });
